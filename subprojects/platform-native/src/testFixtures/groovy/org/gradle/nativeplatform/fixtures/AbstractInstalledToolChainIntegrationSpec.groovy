@@ -23,6 +23,7 @@ import org.gradle.integtests.fixtures.SourceFile
 import org.gradle.internal.os.OperatingSystem
 import org.gradle.internal.time.Time
 import org.gradle.nativeplatform.internal.CompilerOutputFileNamingSchemeFactory
+import org.gradle.nativeplatform.platform.internal.DefaultNativePlatform
 import org.gradle.test.fixtures.file.TestFile
 import org.junit.runner.RunWith
 
@@ -168,5 +169,9 @@ allprojects { p ->
             def nextSecond = now % 1000
             Thread.sleep(1200 - nextSecond)
         }
+    }
+
+    protected String getCurrentOsFamilyName() {
+        DefaultNativePlatform.currentOperatingSystem.toFamilyName()
     }
 }
